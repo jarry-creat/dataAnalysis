@@ -84,7 +84,8 @@ cluster_labels = pd.DataFrame(labels_temp, columns=['clusters'])  # 将聚类标
 merge_data = pd.concat((data, cluster_labels), axis=1)  # 整合原始数据与聚类标签
 # 2.各聚类下的样本量：select count(渠道标识） from table group by 聚类标签
 cluster_counts = pd.DataFrame(merge_data['渠道代号'].groupby(merge_data['clusters'])
-                              .count()).T.rename({'渠道代号': 'counts'})
+                              .count()).T.rename({'渠道代号':'counts'})
+                    
 # 3.各聚类下的样本占比
 cluster_percents = (cluster_counts / len(data)).round(3).rename({'counts': 'percentage'})
 features = []
