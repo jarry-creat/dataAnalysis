@@ -117,7 +117,7 @@ print(all_cluster_pd)
 # 数值特征的对比分析：绘制雷达图
 # 1.获取各簇/类/集群的数值特征均值、并且标准化（Max-Min归一化，0~1）
 print('{:*^60}'.format('数值特征的对比分析：绘制雷达图'))
-nums_data = cluster_pd.iloc[:6, :].T.astype(np.float64)  # 获取数据并转换为浮点数
+nums_data = cluster_pd.iloc[:6, :].T.astype(np.float64)  # 获取数据并转换为浮点数nums_data
 nums_min_max = min_max_model.fit_transform(nums_data)  # 获取标准化（归一化）后的数据
 print(nums_min_max.round(4))
 
