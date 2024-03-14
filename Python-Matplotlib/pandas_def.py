@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 # 显示所有列
 pd.set_option('display.max_columns', None)
 # 显示所有行
@@ -14,7 +15,7 @@ def movie_year_amount_tj():
     return pd.DataFrame(data_year_tj)
 
 def country_year_tj():
-    data = pd.read_csv(file,
+    data = pd.read_csv('movie_data_cleaned.csv',
                        usecols=['title', 'country', 'language', 'release_date', 'average'])
     data = data[['title', 'country', 'language', 'release_date', 'average']]
     # 各国每年的电影产量
@@ -49,7 +50,7 @@ def country_year_tj():
 
 
 def language_tj():
-    data = pd.read_csv(file,
+    data = pd.read_csv('movie_data_cleaned.csv',
                        usecols=['title', 'country', 'language', 'release_date', 'average'])
     data = data[['title', 'country', 'language', 'release_date', 'average']]
     # label统计 -> list
@@ -78,12 +79,12 @@ def language_tj():
 
 
 def averge_votes():
-    return pd.read_csv(file, usecols=['average', 'votes', 'title'])
+    return pd.read_csv('movie_data_cleaned.csv', usecols=['average', 'votes', 'title'])
 
 
 def genre_tj():
     # 读取数据
-    data = pd.read_csv(file)
+    data = pd.read_csv('movie_data_cleaned.csv')
     # 获取所有类型：提取每一行的genre元素 -> 新的列表 genre_list -> 去重
     data['genre'] = data['genre'].str.strip('[')
     data['genre'] = data['genre'].str.strip(']')
@@ -129,7 +130,7 @@ def genre_rates_tj(x):
 
 
 def rate_tj_by_year(year_list):
-    data = pd.read_csv(file,
+    data = pd.read_csv('movie_data_cleaned.csv',
                        usecols=['title', 'average', 'release_date'])
     data = data.set_index(pd.to_datetime(data['release_date']))
     tj = []
